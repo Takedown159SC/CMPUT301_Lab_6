@@ -1,2 +1,2 @@
-/build
-!build/dokka/html/index.html
+/build/*
+!/build/dokka/
