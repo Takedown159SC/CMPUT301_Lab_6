@@ -24,7 +24,7 @@ class WizardTest {
         assertEquals(20, evilWizard.mana) // mana of 30 - 10 = 20
     }
 
-    //check behaviour that there is enough mana to case a spell
+    //check behaviour that there is enough mana to cast a spell
     @Test
     fun castSpell_explosion_unsuccessful() {
         evilWizard.mana = 5 // Evil Wizard does not have enough mana to cast "Explosion"
@@ -33,5 +33,26 @@ class WizardTest {
         assertEquals(0, damageDealt)
 
         assertEquals(5, evilWizard.mana) // mana still is 5
+    }
+
+    //check if damage calculation is correct
+    @Test
+    fun castSpell_frostbite_successful() {
+        val damageDealt = evilWizard.castSpell("Frostbite")
+
+        assertEquals(20, damageDealt) // spellPower of 10 * 2 = 20
+
+        assertEquals(25, evilWizard.mana) // mana of 30 - 5 = 25
+    }
+
+    //check behaviour that there is enough mana to cast a spell
+    @Test
+    fun castSpell_frostbite_unsuccessful() {
+        evilWizard.mana = 4 // Evil Wizard does not have enough mana to cast "Frostbite"
+        val damageDealt = evilWizard.castSpell("Frostbite")
+
+        assertEquals(0, damageDealt)
+
+        assertEquals(4, evilWizard.mana) // mana still is 4
     }
 }
